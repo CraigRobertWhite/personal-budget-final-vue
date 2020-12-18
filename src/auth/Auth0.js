@@ -36,15 +36,6 @@ export const Auth0 = () => {
                 this.isAuthenticated = await this.auth0Client.isAuthenticated();
                 if (this.isAuthenticated) {
                     await this._setUserState();
-
-                    const { data } = await getCurrentUser();
-                    const { auth0_id, ...user } = data;
-
-                    if (this.user.sub !== auth0_id) {
-                        throw new Error('Failed to get correct user.')
-                    }
-
-                    this.user = { ...this.user, ...user }
                 }
             } catch (error) {
                 this.logout()
@@ -92,6 +83,13 @@ export const Auth0 = () => {
                 this.user = await this.auth0Client.getUser();
                 const claims = await this.auth0Client.getIdTokenClaims();
                 this.permissions = claims['https://craigrobertwhite.com/permissions'] || [];
+
+                const { data } = await getCurrentUser();
+                const { auth0_id, ...user } = data;
+                if (this.user.sub !== auth0_id) {
+                    throw new Error('Failed to get correct user.')
+                }
+                this.user = { ...this.user, ...user }
             }
         }
     });
