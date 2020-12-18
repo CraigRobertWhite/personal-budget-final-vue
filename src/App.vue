@@ -3,7 +3,8 @@
         <LoadingSpinner v-if="$auth.loading" />
         <div v-else-if="$auth.isAuthenticated">
             <Navbar v-if="displayNavbar" />
-            <div class="container" :style="{'padding-top': displayNavbar ? '70px' : '0'}">
+            <LoadingSpinner v-if="$root.loading" />
+            <div v-else class="container" :style="{'padding-top': displayNavbar ? '70px' : '0'}">
                 <div class="content">
                     <transition name="fade" mode="out-in">
                         <router-view></router-view>
@@ -48,4 +49,32 @@ export default {
     opacity: 0;
 }
 
+.vh-100 {
+    height: 100vh
+}
+
+.vh-75 {
+    height: 75vh
+}
+
+.vh-50 {
+    height: 50vh
+}
+
+.vh-25 {
+    height: 25vh
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+a {
+    color: #000000;
+    transition: 0.1s;
+}
+
+a:hover {
+    color: #00c805;
+}
 </style>
