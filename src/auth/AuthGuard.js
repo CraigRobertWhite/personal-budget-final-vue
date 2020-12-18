@@ -9,7 +9,7 @@ export const AuthGuard = (to, _from, next) => {
                 authService.handleRedirectCallback(to.fullPath)
                 next({ name: 'dashboard' });
             } catch (err) {
-                authService.login();
+                authService.logout();
             }
         }
 
@@ -17,7 +17,7 @@ export const AuthGuard = (to, _from, next) => {
             if (authService.isAuthenticated) {
                 next({ name: 'dashboard' });
             } else {
-                authService.login();
+                authService.logout();
             }
         }
 
