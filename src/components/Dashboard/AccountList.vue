@@ -32,22 +32,22 @@
 </template>
 
 <script>
-export default {
-    name: 'AccountList',
-    props: {
-        value: {
-            type: Object,
-            required: true,
-        }
-    },
-    methods: {
-        setSelectedAccount(account) {
-            if (this.value.id !== account.id) {
-                this.$emit('input', { ...account });
+    export default {
+        name: 'AccountList',
+        props: {
+            value: {
+                type: Object,
+                required: true,
+            }
+        },
+        methods: {
+            setSelectedAccount(account) {
+                if (this.value.id !== account.id) {
+                    this.$emit('input', { ...account });
+                }
             }
         }
     }
-}
 </script>
 
 <style scoped>

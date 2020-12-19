@@ -16,20 +16,20 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar';
-import LoadingSpinner from '@/components/LoadingSpinner';
+    import Navbar from '@/components/Navbar';
+    import LoadingSpinner from '@/components/LoadingSpinner';
 
-export default {
-    components: {
-        Navbar,
-        LoadingSpinner
-    },
-    computed: {
-        displayNavbar() {
-            return this.$route.matched.length && !(this.$route.meta.navbar === false)
+    export default {
+        components: {
+            Navbar,
+            LoadingSpinner
+        },
+        computed: {
+            displayNavbar() {
+                return this.$route.matched.length && !(this.$route.meta.navbar === false)
+            }
         }
     }
-}
 </script>
 
 <style>

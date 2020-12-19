@@ -1,0 +1,60 @@
+{
+    "root": true,
+    "env": {
+        "node": true,
+        "jquery": true
+    },
+    "extends": [
+        "plugin:vue/strongly-recommended",
+        "eslint:recommended"
+    ],
+    "globals": {
+        "_": "readonly"
+    },
+    "ignorePatterns": ["public/theme/**"],
+    "parserOptions": {
+        "parser": "babel-eslint"
+    },
+    "rules": {
+        "curly": ["error"],
+        "eol-last": ["error", "always"],
+        "indent": ["error", 4],
+        "linebreak-style": ["error", "unix"],
+        "max-len": ["warn", {
+            "code": 120,
+            "ignoreUrls": true,
+            "ignoreRegExpLiterals": true
+        }],
+        "new-parens": "error",
+        "no-console": "warn",
+        "no-debugger": "warn",
+        "no-trailing-spaces": ["error", { "skipBlankLines": true }],
+        "no-unused-vars": ["warn"],
+        "no-var": ["error"],
+        "object-curly-spacing": ["error", "always", { "objectsInObjects": false }],
+        "prefer-const": ["warn"],
+        "quotes": ["error", "single"],
+        "require-await": ["warn"],
+        "space-before-function-paren": ["error", {
+            "anonymous": "never",
+            "named": "never",
+            "asyncArrow": "always"
+        }],
+        "vue/html-closing-bracket-newline": "off",
+        "vue/html-indent": ["error", 4, { "baseIndent": 1 }],
+        "vue/max-attributes-per-line": ["error", {
+            "singleline": 99,
+            "multiline": { "max": 1, "allowFirstLine": true }
+        }],
+        "vue/script-indent": ["error", 4, { "baseIndent": 1 }],
+        "vue/singleline-html-element-content-newline": "off"
+    },
+    "overrides": [
+        {
+            "files": ["*.vue", "*.js"],
+            "rules": {
+                "indent": "off"
+            }
+        }
+    ]
+}

@@ -7,8 +7,8 @@
                         <form @submit.prevent="updateCurrentUser()" class="d-flex flex-column">
                             <h5>Welcome {{ name }}!</h5>
                             <p>
-                                Because you probably don't want to be called "User" for the remainder of your visit, please
-                                enter your information below:
+                                Because you probably don't want to be called "User" for the remainder of your visit,
+                                please enter your information below:
                             </p>
                             <fieldset class="row" :disabled="submitting">
                                 <div class="form-group col-md-6 mb-3">
@@ -53,52 +53,52 @@
 </template>
 
 <script>
-import { updateCurrentUser } from '@/services/UserService';
+    import { updateCurrentUser } from '@/services/UserService';
 
-export default {
-    name: 'Welcome',
-    data() {
-        return {
-            modal: null,
-            user: {
-                first_name: '',
-                last_name: '',
-                email: this.$auth.user.name
-            },
-            submitting: false
-        }
-    },
-    computed: {
-        name() {
-            if (this.user.first_name || this.user.last_name) {
-                return `${this.user.first_name} ${this.user.last_name}`.trim();
-            } else {
-                return 'User';
+    export default {
+        name: 'Welcome',
+        data() {
+            return {
+                modal: null,
+                user: {
+                    first_name: '',
+                    last_name: '',
+                    email: this.$auth.user.name
+                },
+                submitting: false
             }
-        }
-    },
-    mounted() {
-        this.modal = new window.bootstrap.Modal(this.$refs['welcome-modal'], {
-            keyboard: false,
-            backdrop: false
-        });
-        this.modal.show();
-    },
-    methods: {
-        async updateCurrentUser() {
-            this.submitting = true;
-            try {
-                const { data: user } = await updateCurrentUser(this.user);
-                this.$auth.user = {...this.$auth.user, ...user}
-                this.$router.push({ name: 'dashboard' });
-            } catch (error) {
-                console.log(error)
-            } finally {
-                this.submitting = false;
+        },
+        computed: {
+            name() {
+                if (this.user.first_name || this.user.last_name) {
+                    return `${this.user.first_name} ${this.user.last_name}`.trim();
+                } else {
+                    return 'User';
+                }
+            }
+        },
+        mounted() {
+            this.modal = new window.bootstrap.Modal(this.$refs['welcome-modal'], {
+                keyboard: false,
+                backdrop: false
+            });
+            this.modal.show();
+        },
+        methods: {
+            async updateCurrentUser() {
+                this.submitting = true;
+                try {
+                    const { data: user } = await updateCurrentUser(this.user);
+                    this.$auth.user = { ...this.$auth.user, ...user }
+                    this.$router.push({ name: 'dashboard' });
+                } catch (error) {
+                    console.log(error)
+                } finally {
+                    this.submitting = false;
+                }
             }
         }
     }
-}
 </script>
 
 <style scoped>

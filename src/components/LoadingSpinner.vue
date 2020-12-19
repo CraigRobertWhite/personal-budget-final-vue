@@ -5,9 +5,9 @@
 </template>
 
 <script>
-export default {
-name: "LoadingSpinner"
-}
+    export default {
+        name: 'LoadingSpinner'
+    }
 </script>
 
 <style scoped>

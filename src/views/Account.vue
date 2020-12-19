@@ -3,7 +3,8 @@
         <div class="d-flex align-items-center mb-4">
             <img :src="$auth.user.picture"
                  :alt="`${$auth.user.first_name} ${$auth.user.last_name}`"
-                 class="rounded-circle me-3" width="75">
+                 class="rounded-circle me-3"
+                 width="75">
             <h2>{{ `${$auth.user.first_name} ${$auth.user.last_name}` }}</h2>
         </div>
         <h4 class="mb-3">Linked Accounts</h4>
@@ -61,36 +62,36 @@
 </template>
 
 <script>
-import { createAccount } from '@/services/AccountService';
+    import { createAccount } from '@/services/AccountService';
 
-export default {
-    name: 'Account',
-    data() {
-        return {
-            account: {
-                name: null,
-                amount: null
-            },
-            submitting: false,
-            addingNewAccount: false
-        }
-    },
-    methods: {
-        async submit() {
-            this.submitting = true;
-            try {
-                const newAccount = { ...this.account };
-                newAccount['amount'] = newAccount['amount'] * 100;
-                const { data: account } = await createAccount(newAccount);
-                this.$auth.user.accounts.push(account);
-            } catch (error) {
-                console.log('An error occurred');
-            } finally {
-                this.submitting = false;
+    export default {
+        name: 'Account',
+        data() {
+            return {
+                account: {
+                    name: null,
+                    amount: null
+                },
+                submitting: false,
+                addingNewAccount: false
+            }
+        },
+        methods: {
+            async submit() {
+                this.submitting = true;
+                try {
+                    const newAccount = { ...this.account };
+                    newAccount['amount'] = newAccount['amount'] * 100;
+                    const { data: account } = await createAccount(newAccount);
+                    this.$auth.user.accounts.push(account);
+                } catch (error) {
+                    console.log('An error occurred');
+                } finally {
+                    this.submitting = false;
+                }
             }
         }
     }
-}
 </script>
 
 <style scoped>
