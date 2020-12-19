@@ -10,13 +10,20 @@
                     </router-link>
                 </div>
                 <hr class="m-0">
-                <div class="d-flex flex-column">
-                    <div v-for="account in $auth.user.accounts"
-                         :key="account.id"
-                         @mouseover="setSelectedAccount(account)"
-                         class="d-flex flex-row p-3 account">
-                        <strong>{{ account.name }}</strong>
-                        <span class="ms-auto">{{ account.balance | formatCents }}</span>
+                <div class="d-flex flex-column h-75">
+                    <div v-if="$auth.user.accounts.length">
+                        <div v-for="account in $auth.user.accounts"
+                             :key="account.id"
+                             @mouseover="setSelectedAccount(account)"
+                             class="d-flex flex-row p-3 account">
+                            <strong>{{ account.name }}</strong>
+                            <span class="ms-auto">{{ account.balance | formatCents }}</span>
+                        </div>
+                    </div>
+                    <div v-else class="d-flex h-100 align-items-center justify-content-center">
+                        <div>
+                            Try adding an account :)
+                        </div>
                     </div>
                 </div>
             </div>
