@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="card shadow">
-            <div class="card-body vh-75 p-0">
+            <div class="card-body vh-50 p-0">
                 <div class="d-flex align-items-center p-3">
                     <h6 class="m-0">Accounts</h6>
                     <router-link :to="{ name: 'account' }"

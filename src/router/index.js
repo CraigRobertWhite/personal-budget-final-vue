@@ -5,6 +5,7 @@ import { AuthGuard } from '@/auth/AuthGuard';
 Vue.use(VueRouter)
 
 const routes = [
+    // Auth Routes -----------------------------------------------------------------------------------------------------
     {
         path: '/login',
         name: 'login',
@@ -26,6 +27,7 @@ const routes = [
             navbar: false
         }
     },
+    // General Routes --------------------------------------------------------------------------------------------------
     {
         path: '/',
         name: 'dashboard',
@@ -43,6 +45,22 @@ const routes = [
         },
     },
     {
+        path: '/budget',
+        name: 'budget',
+        component: () => import('../views/Budget.vue'),
+        meta: {
+            requiredPermissions: []
+        },
+    },
+    {
+        path: '/goals',
+        name: 'goals',
+        component: () => import('../views/Goals.vue'),
+        meta: {
+            requiredPermissions: []
+        },
+    },
+    {
         path: '/welcome',
         name: 'welcome',
         component: () => import('../views/Welcome.vue'),
@@ -51,6 +69,7 @@ const routes = [
             navbar: false
         },
     },
+    // Catch-all Route -------------------------------------------------------------------------------------------------
     {
         path: '*',
         redirect: 'dashboard',

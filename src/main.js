@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import filters from './filters'
+import VueApexCharts from 'vue-apexcharts'
 import '@/util/AxiosInterceptor'
 
 import { Auth0 } from '@/auth/Auth0';
@@ -14,9 +15,11 @@ Vue.config.productionTip = false;
 Vue.prototype.$auth = Auth0();
 
 library.add(fas)
-Vue.component('FontAwesomeIcon', FontAwesomeIcon)
-Vue.use(Laue);
 Vue.use(filters);
+Vue.use(Laue);
+Vue.use(VueApexCharts)
+Vue.component('ApexChart', VueApexCharts)
+Vue.component('FontAwesomeIcon', FontAwesomeIcon)
 
 export const app = new Vue({
     router,

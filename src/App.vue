@@ -7,7 +7,7 @@
             <div v-else class="container" :style="{'padding-top': displayNavbar ? '70px' : '0'}">
                 <div class="content">
                     <transition name="fade" mode="out-in">
-                        <router-view></router-view>
+                        <router-view />
                     </transition>
                 </div>
             </div>
@@ -33,10 +33,6 @@
 </script>
 
 <style>
-.content {
-    min-height: 100vh;
-}
-
 .fade-enter-active,
 .fade-leave-active {
     transition-duration: 0.25s;
@@ -70,12 +66,12 @@
 }
 
 a {
-    color: #00c805!important;
+    color: #00c805;
     text-decoration: none;
     transition: 0.1s;
 }
 
 a:hover {
-    color: #000000!important;
+    color: #000000;
 }
 </style>
