@@ -14,11 +14,10 @@
         <LaTooltip>
             <div class="la-tooltip shadow" slot-scope="props">
                 <div class="la-tooltip-title text-center">{{ props.label }}</div>
-                <div class="row g-0">
+                <div class="d-flex flex-row g-0">
                     <div v-for="item in props.actived"
                          :key="item.label"
-                         :style="{ borderTop: '3px solid ' + item.color }"
-                         class="col-3">
+                         :style="{ borderTop: '3px solid ' + item.color }">
                         <div class="d-flex flex-column p-2 pe-4">
                             <span class="la-tooltip-label">{{ item.label }}</span>
                             <span class="la-tooltip-value">{{ item.value | formatCents }}</span>
