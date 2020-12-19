@@ -14,7 +14,7 @@
             <AccountList v-model="selectedAccount" class="col-3 d-none d-md-block" />
         </section>
         <section class="row">
-            <div class="col-md-6">
+            <div v-if="$auth.user.monthly_expenses.length" class="col-md-6">
                 <div class="d-flex align-items-center">
                     <h3 class="m-0 me-3">Budget</h3>
                     <router-link :to="{ name: 'budget' }">
@@ -23,7 +23,7 @@
                 </div>
                 <ExpensesGraph />
             </div>
-            <div class="col-md-6">
+            <div v-if="$auth.user.goals.length" class="col-md-6">
                 <div class="d-flex align-items-center">
                     <h3 class="m-0 me-3">Goals</h3>
                     <router-link :to="{ name: 'goals' }">
