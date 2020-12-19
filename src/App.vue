@@ -70,11 +70,12 @@ export default {
 }
 
 a {
-    color: #000000;
+    color: #00c805!important;
+    text-decoration: none;
     transition: 0.1s;
 }
 
 a:hover {
-    color: #00c805;
+    color: #000000!important;
 }
 </style>
