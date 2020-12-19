@@ -82,7 +82,7 @@
                     const { data: monthly_expense } = await createMonthlyExpense(newMonthlyExpense);
                     this.$auth.user.monthly_expenses.push(monthly_expense);
                 } catch (error) {
-                    console.log('An error occurred');
+                    console.log(error);
                 } finally {
                     this.submitting = false;
                 }

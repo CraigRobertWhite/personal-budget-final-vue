@@ -85,7 +85,7 @@
                     const { data: account } = await createAccount(newAccount);
                     this.$auth.user.accounts.push(account);
                 } catch (error) {
-                    console.log('An error occurred');
+                    console.log(error);
                 } finally {
                     this.submitting = false;
                 }

@@ -23,11 +23,6 @@
                     }
                 }
             }
-        },
-        mounted() {
-            console.log(Object.values(this.$auth.user.monthly_expenses).map((value) => {
-                return value['name']
-            }))
         }
     }
 </script>

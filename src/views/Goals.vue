@@ -82,7 +82,7 @@
                     const { data: goal } = await createGoal(newGoal);
                     this.$auth.user.goals.push(goal);
                 } catch (error) {
-                    console.log('An error occurred');
+                    console.log(error);
                 } finally {
                     this.submitting = false;
                 }
