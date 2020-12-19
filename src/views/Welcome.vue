@@ -11,7 +11,7 @@
                                 please enter your information below:
                             </p>
                             <fieldset class="row" :disabled="submitting">
-                                <div class="form-group col-md-6 mb-3">
+                                <div class="form-group col-md-4 mb-3">
                                     <label for="first-name" class="form-label">First Name</label>
                                     <input v-model="user.first_name"
                                            id="first-name"
@@ -19,7 +19,7 @@
                                            class="form-control"
                                            required>
                                 </div>
-                                <div class="form-group col-md-6 mb-3">
+                                <div class="form-group col-md-4 mb-3">
                                     <label for="last-name" class="form-label">Last Name</label>
                                     <input v-model="user.last_name"
                                            id="last-name"
@@ -27,9 +27,25 @@
                                            class="form-control"
                                            required>
                                 </div>
+                                <div class="form-group col-md-4 mb-3">
+                                    <label for="income" class="form-label">Monthly Gross Income</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input v-model="user.monthly_gross_income"
+                                               id="income"
+                                               type="number"
+                                               min="1"
+                                               max="1000000"
+                                               step="1"
+                                               placeholder="0"
+                                               class="form-control"
+                                               required>
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+                                </div>
                                 <div class="form-group col mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input :value="user.email"
+                                    <input :value="$auth.user.name"
                                            id="email"
                                            type="text"
                                            class="form-control"
@@ -63,7 +79,7 @@
                 user: {
                     first_name: '',
                     last_name: '',
-                    email: this.$auth.user.name
+                    monthly_gross_income: null
                 },
                 submitting: false
             }
@@ -88,7 +104,10 @@
             async updateCurrentUser() {
                 this.submitting = true;
                 try {
-                    const { data: user } = await updateCurrentUser(this.user);
+                    const new_user = { ...this.user };
+                    new_user['email'] = this.$auth.user.name;
+                    new_user['monthly_gross_income'] = this.user.monthly_gross_income * 100;
+                    const { data: user } = await updateCurrentUser(new_user);
                     this.$auth.user = { ...this.$auth.user, ...user }
                     this.$router.push({ name: 'dashboard' });
                 } catch (error) {
