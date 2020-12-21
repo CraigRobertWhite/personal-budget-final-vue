@@ -49,8 +49,12 @@
                             </button>
                         </form>
                     </div>
-                    <div v-else @click="creatingGoal = true">
+                    <div v-else-if="$auth.user.accounts.length" @click="creatingGoal = true">
                         <a role="button">Add New Goal</a>
+                    </div>
+                    <div v-else>
+                        Before adding a goal, please
+                        <router-link :to="{ name: 'account' }">add an account</router-link>.
                     </div>
                 </li>
             </transition-group>

@@ -49,8 +49,12 @@
                             </button>
                         </form>
                     </div>
-                    <div v-else @click="creatingMonthlyExpense = true">
+                    <div v-else-if="$auth.user.accounts.length" @click="creatingMonthlyExpense = true">
                         <a role="button">Add New Expense</a>
+                    </div>
+                    <div v-else>
+                        Before adding an expense to your budget, please
+                        <router-link :to="{ name: 'account' }">add an account</router-link>.
                     </div>
                 </li>
             </transition-group>
