@@ -91,7 +91,7 @@ export const Auth0 = () => {
                 this.permissions = claims['https://craigrobertwhite.com/permissions'] || [];
 
                 const { data } = await getCurrentUser();
-                const { auth0_id, ...user } = data;
+                const { auth0_id, email, ...user } = data;
                 if (this.user.sub !== auth0_id) {
                     throw new Error('Failed to get correct user.')
                 }

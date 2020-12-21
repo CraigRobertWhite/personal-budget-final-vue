@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="form-group col mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input :value="$auth.user.name"
+                                    <input :value="$auth.user.email"
                                            id="email"
                                            type="text"
                                            class="form-control"
@@ -79,7 +79,8 @@
                 user: {
                     first_name: '',
                     last_name: '',
-                    monthly_gross_income: null
+                    monthly_gross_income: null,
+                    finished_registration: true
                 },
                 submitting: false
             }
@@ -105,7 +106,7 @@
                 this.submitting = true;
                 try {
                     const new_user = { ...this.user };
-                    new_user['email'] = this.$auth.user.name;
+                    new_user['email'] = this.$auth.user.email;
                     new_user['monthly_gross_income'] = this.user.monthly_gross_income * 100;
                     const { data: user } = await updateCurrentUser(new_user);
                     this.$auth.user = { ...this.$auth.user, ...user }

@@ -26,7 +26,7 @@ export const AuthGuard = (to, _from, next) => {
         }
 
         if ('/welcome' === to.path) {
-            if (authService.user.email) {
+            if (authService.user.finished_registration) {
                 next({ name: 'dashboard' });
             } else {
                 next();
@@ -34,7 +34,7 @@ export const AuthGuard = (to, _from, next) => {
         }
 
         if (authService.isAuthenticated) {
-            if (!authService.user.email && to.path !== '/welcome') {
+            if (!authService.user.finished_registration && to.path !== '/welcome') {
                 next({ name: 'welcome' });
             } else {
                 next();
